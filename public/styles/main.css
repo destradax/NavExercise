@@ -1,18 +1,44 @@
 @import "fonts.css";
 
+html {
+	padding: 0;
+}
+
 body {
-  background: #ec008c;
-  color: #fff;
+	margin: 0;
+	background: #fff;
+	color: #fff;
 }
 
 h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  margin: 0;
-  font: 20vmin/1 HUGEAvantGardeBold;
-  letter-spacing: -0.06em;
-  text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	margin: 0;
+	font: 20vmin/1 HUGEAvantGardeBold;
+	letter-spacing: -0.06em;
+	text-align: center;
+}
+
+nav {
+	background: #ec008c;
+	padding: 24px 0;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	padding: 24px;
+	display: inline;
+	font: 24px HUGEAvantGardeBold;
+}
+
+nav ul li.brand {
+	max-width: 60px;
 }
