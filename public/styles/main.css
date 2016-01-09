@@ -10,18 +10,6 @@ body {
 	color: #fff;
 }
 
-h1 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	margin: 0;
-	font: 20vmin/1 HUGEAvantGardeBold;
-	letter-spacing: -0.06em;
-	text-align: center;
-}
-
 nav {
 	background: #ec008c;
 	padding: 24px 0;
@@ -41,4 +29,34 @@ nav ul li {
 
 nav ul li.brand {
 	max-width: 60px;
+	padding-right: 48px;
+}
+
+header {
+	height: 640px;
+	background: url("../images/background-image.jpg") 0%/100% no-repeat;
+}
+
+header h1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	margin: 0;
+	font: 20vmin/1 HUGEAvantGardeBold;
+	letter-spacing: -0.06em;
+	text-align: center;
+}
+
+section {
+	color: #000;
+}
+
+article {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 60px;
+	width: 968px;
+	font: 24px Galaxie;
 }
