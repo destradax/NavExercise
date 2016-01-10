@@ -8,11 +8,15 @@ nav ul {
 
 @media only screen and (min-width: 768px) {
 
+	nav {
+		background-color: #ec008c;
+	}
+
 	nav ul li {
 		float: left;
 	}
 
-	#logo-container {
+	#nav-header {
 		float: left;
 	}
 
@@ -69,12 +73,47 @@ nav ul {
 }
 
 @media only screen and (max-width: 767px) {
+
+	#nav-header {
+		background-color: #ec008c;
+		height: 60px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	#nav-open, #nav-close {
+		position: absolute;
+		top: -4px;
+	}
+
+	#nav-open {
+		left: -4px;
+	}
+
+	#nav-close {
+		display: none;
+		right: -4px;
+	}
+
 	#logo {
+		display: none;
 		margin-top: 20px;
 		margin-left: 24px;
 		margin-bottom: 20px;
 		width: 50px;
 		height: 20px;
+	}
+
+	nav.active #logo, nav.active #nav-close {
+		display: inline;
+	}
+
+	nav.active #nav-open {
+		display: none;
+	}
+
+	nav ul {
+		display: none;
 	}
 
 	nav ul li {
