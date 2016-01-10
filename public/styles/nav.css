@@ -1,29 +1,30 @@
-nav {
-	background: #ec008c;
-	padding: 24px 0;
-}
-
 nav ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
+	background-color: #ec008c;
 }
 
 nav ul li {
-	display: inline;
-	font: 24px HUGEAvantGardeBold;
+	float: left;
 }
 
-nav ul li.brand {
-	max-width: 60px;
-	padding: 24px 48px 24px 24px;
-	padding-right: 48px;
+#logo {
+	margin-top: 24px;
+	margin-left: 24px;
+	margin-right: 48px;
+	width: 60px;
+	height: 24px;
 }
 
 nav ul li a {
-	padding: 24px;
-	text-decoration: none;
+	display: block;
 	color: #fff;
+	text-align: center;
+	padding: 12px 24px;
+	text-decoration: none;
+	font: 24px/48px HUGEAvantGardeBold;
 }
 
 nav ul li a:hover {
