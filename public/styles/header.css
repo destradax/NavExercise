@@ -1,21 +1,44 @@
 header {
 	position: relative;
-	max-height: 640px;
+}
+
+header div.img-wrapper {
 	overflow: hidden;
 }
 
-header img {
+header div.img-wrapper img {
 	width: 100%;
 }
 
-header h1 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	margin: 0;
-	font: 120px/132px HUGEAvantGardeBold;
-	letter-spacing: -0.02em;
-	text-align: center;
+@media only screen and (min-width: 768px) {
+
+	header div.img-wrapper {
+		max-height: 640px;
+	}
+
+	header h1 {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		margin: 0;
+		font: 120px/132px HUGEAvantGardeBold;
+		letter-spacing: -0.02em;
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+
+	header div.img-wrapper {
+		max-height: 240px;
+	}
+
+	header h1 {
+		font: 44px/48px HUGEAvantGardeBold;
+		color: #000;
+		margin-left: 24px;
+		margin-top: 50px;
+	}
 }
