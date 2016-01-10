@@ -2,25 +2,24 @@
 @import "header.css";
 @import "nav.css";
 
-html {
-	padding: 0;
-}
-
-body {
-	margin: 0;
-	background: #fff;
-	color: #fff;
-}
-
-section {
-	color: #000;
-}
-
-article {
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 60px;
-	max-width: 968px;
-	font: 24px/36px Galaxie;
+main article {
 	text-align: justify;
+}
+
+@media only screen and (min-width: 768px) {
+	main article {
+		font: 24px/36px Galaxie;
+		margin: 60px auto;
+		max-width: 968px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	main {
+		padding: 0px 24px;
+	}
+	main article {
+		font: 14px/24px Galaxie;
+		margin: 50px auto;
+	}
 }

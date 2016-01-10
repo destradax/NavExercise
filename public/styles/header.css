@@ -26,6 +26,7 @@ header div.img-wrapper img {
 		font: 120px/132px HUGEAvantGardeBold;
 		letter-spacing: -0.02em;
 		text-align: center;
+		color: #fff;
 	}
 }
 
@@ -40,5 +41,6 @@ header div.img-wrapper img {
 		color: #000;
 		margin-left: 24px;
 		margin-top: 50px;
+		margin-bottom: 0px;
 	}
 }
