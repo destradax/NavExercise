@@ -97,4 +97,27 @@ nav ul {
 	nav ul li a:hover {
 		background-color: #eee;
 	}
+
+	nav ul li .dropdown-content {
+		display: none;
+		background-color: #fff;
+	}
+
+	nav ul li:hover .dropdown-content {
+		display: block;
+	}
+
+	nav ul li .dropdown-content a {
+		color: black;
+		display: block;
+		font: 16px/48px Galaxie;
+		padding: 0px 24px;
+		text-align: left;
+		text-decoration: none;
+	}
+
+	nav ul li .dropdown-content a:hover {
+		background-color: #eee;
+		color: #ec008c;
+	}
 }
