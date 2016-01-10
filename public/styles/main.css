@@ -23,8 +23,8 @@ header h1 {
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	margin: 0;
-	font: 20vmin/1 HUGEAvantGardeBold;
-	letter-spacing: -0.06em;
+	font: 120px/132px HUGEAvantGardeBold;
+	letter-spacing: -0.02em;
 	text-align: center;
 }
 
@@ -36,6 +36,7 @@ article {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 60px;
-	width: 968px;
-	font: 24px Galaxie;
+	max-width: 968px;
+	font: 24px/36px Galaxie;
+	text-align: justify;
 }
