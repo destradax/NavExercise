@@ -1,6 +1,11 @@
 header {
-	height: 640px;
-	background: url("../images/background-image.jpg") 0%/100% no-repeat;
+	position: relative;
+	max-height: 640px;
+	overflow: hidden;
+}
+
+header img {
+	width: 100%;
 }
 
 header h1 {
