@@ -1,4 +1,5 @@
 @import "fonts.css";
+@import "nav.css";
 
 html {
 	padding: 0;
@@ -8,39 +9,6 @@ body {
 	margin: 0;
 	background: #fff;
 	color: #fff;
-}
-
-nav {
-	background: #ec008c;
-	padding: 24px 0;
-}
-
-nav ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-nav ul li {
-	display: inline;
-	font: 24px HUGEAvantGardeBold;
-}
-
-nav ul li.brand {
-	max-width: 60px;
-	padding: 24px 48px 24px 24px;
-	padding-right: 48px;
-}
-
-nav ul li a {
-	padding: 24px;
-	text-decoration: none;
-	color: #fff;
-}
-
-nav ul li a:hover {
-	background-color: #fff;
-	color: #ec008c;
 }
 
 header {
