@@ -6,10 +6,30 @@ nav ul {
 	background-color: #ec008c;
 }
 
-@media only screen and (min-width: 768px) {
+#nav-open, #nav-close {
+	display: none;
+}
 
+#overlay {
+	display: none;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+}
+
+nav.active #overlay {
+	display: block;
+}
+
+@media only screen and (min-width: 768px) {
 	nav {
 		background-color: #ec008c;
+	}
+
+	#overlay {
+		top: 72px;
 	}
 
 	nav ul li {
@@ -73,6 +93,9 @@ nav ul {
 }
 
 @media only screen and (max-width: 767px) {
+	#overlay {
+		top: 60px;
+	}
 
 	#nav-header {
 		background-color: #ec008c;
@@ -87,6 +110,7 @@ nav ul {
 	}
 
 	#nav-open {
+		display: inline;
 		left: -4px;
 	}
 
