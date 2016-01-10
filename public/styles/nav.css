@@ -12,6 +12,10 @@ nav ul {
 		float: left;
 	}
 
+	#logo-container {
+		float: left;
+	}
+
 	#logo {
 		margin-top: 24px;
 		margin-left: 24px;
@@ -29,10 +33,38 @@ nav ul {
 		font: 24px/48px HUGEAvantGardeBold;
 	}
 
-	nav ul li a:hover {
+	nav ul li:hover {
 		background-color: #fff;
+	}
+
+	nav ul li:hover a {
 		color: #ec008c;
 	}
+
+	nav ul li .dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #fff;
+		z-index: 1;
+	}
+
+	nav ul li:hover .dropdown-content {
+		display: block;
+	}
+
+	nav ul li .dropdown-content a {
+		color: black;
+		padding: 0px 24px;
+		text-decoration: none;
+		display: block;
+		font: 16px/48px Galaxie;
+	}
+
+	nav ul li .dropdown-content a:hover {
+		background-color: #eee;
+		color: #ec008c;
+	}
+
 }
 
 @media only screen and (max-width: 767px) {
