@@ -54,10 +54,11 @@ nav ul {
 
 	nav ul li .dropdown-content a {
 		color: black;
-		padding: 0px 24px;
-		text-decoration: none;
 		display: block;
 		font: 16px/48px Galaxie;
+		padding: 0px 24px;
+		text-align: left;
+		text-decoration: none;
 	}
 
 	nav ul li .dropdown-content a:hover {
