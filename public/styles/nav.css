@@ -57,11 +57,11 @@ nav.active #overlay {
 		font: 24px/48px HUGEAvantGardeBold;
 	}
 
-	nav ul li:hover {
+	nav ul li:hover, nav ul li.active {
 		background-color: #fff;
 	}
 
-	nav ul li:hover a {
+	nav ul li:hover a, nav ul li.active a {
 		color: #ec008c;
 	}
 
@@ -72,7 +72,7 @@ nav.active #overlay {
 		z-index: 1;
 	}
 
-	nav ul li:hover .dropdown-content {
+	nav ul li.active .dropdown-content {
 		display: block;
 	}
 
@@ -173,7 +173,7 @@ nav.active #overlay {
 		background-color: #fff;
 	}
 
-	nav ul li:hover .dropdown-content {
+	nav ul li.active .dropdown-content {
 		display: block;
 	}
 
