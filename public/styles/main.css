@@ -2,6 +2,10 @@
 @import "header.css";
 @import "nav.css";
 
+body {
+	position: relative;
+}
+
 main article {
 	text-align: justify;
 }
