@@ -1,10 +1,8 @@
 'use strict';
-var nav = document.querySelector('nav');
-var navOpen = document.querySelector('#nav-open');
+var nav = document.querySelector('#nav');
 var navClose = document.querySelector('#nav-close');
+var navOpen = document.querySelector('#nav-open');
 var overlay = document.querySelector('#overlay');
-var primaryNavs = Array.prototype.slice.call(document.querySelectorAll('ul.primary > li'));
-var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav ul li a'));
 
 /**
  * Creates and HTML node of the given tagName, with the given id and classes.
@@ -50,7 +48,7 @@ var createListItem = function (options) {
 };
 
 /**
- * Creates an anchor node with the given url and text.
+ * Creates an anchor node with the given url, text and other options, see createNode(options).
  * @param options.url {string} the url to be set to the anchor href attribute.
  * @param options.label {string} the text that will be appended to the anchor.
  */
@@ -81,68 +79,10 @@ var createNavListFromItems = function (items) {
 };
 
 /**
- * Builds the unordered list node that represents the navigation bar.
- * @param items {array} a list of items that represent the structure that the navigation bar should have.
- */
-var buildNavbarItemList = function (items) {
-	var listItems = [];
-
-	items.forEach(function (item) {
-
-		var isDropdown = item.items && item.items.length > 0;
-		var anchorOptions = {
-			url: item.url,
-			label: item.label,
-			classes: isDropdown ? ['dropdown-btn'] : null
-		};
-		var anchor = createAnchor(anchorOptions);
-
-		var listItemOptions = {
-			children: [anchor]
-		};
-
-		if (isDropdown) {
-			var secondaryUl = createNavListFromItems(item.items);
-			secondaryUl.classList.add('secondary');
-			listItemOptions.children.push(secondaryUl);
-		}
-
-		var listItem = createListItem(listItemOptions);
-		listItems.push(listItem);
-	});
-
-	var unorderedList = createUnorderedList({children: listItems});
-	return unorderedList;
-};
-
-/**
- * Constructs the navbar based on the given json structure.
- */
-var initializeNavbar = function (json) {
-	var unorderedList = buildNavbarItemList(json.items);
-
-	console.log(unorderedList);
-};
-
-/**
- * Creates an ajax request for the nav json, parses it as a json object and calls the given callback with the json object.
- */
-var getNavJSON = function (callback) {
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (xhttp.readyState === 4 && xhttp.status === 200) {
-			callback(JSON.parse(xhttp.responseText));
-		}
-	};
-	xhttp.open('GET', 'api/nav.json', true);
-	xhttp.send();
-};
-getNavJSON(initializeNavbar);
-
-/**
  * Deactivates all the primary nav links.
  */
 var deactivatePrimaryNavs = function () {
+	var primaryNavs = Array.prototype.slice.call(document.querySelectorAll('ul.primary > li'));
 	primaryNavs.forEach(function (nav) {
 		if (nav.classList.contains('active')) {
 			nav.classList.remove('active');
@@ -193,6 +133,7 @@ var resetNav = function () {
 	deactivatePrimaryNavs();
 	closeNavbar();
 };
+overlay.addEventListener('click', resetNav);
 
 /**
  * Handles the click in the navbar links:
@@ -227,12 +168,94 @@ var clickNavLink = function (event) {
 /**
  * Attaches the necessary events to their respective nodes.
  */
-var initializeListeners = function () {
+var addNavbarListeners = function () {
+	var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav ul li a'));
+
 	navOpen.addEventListener('click', openNavbar);
 	navClose.addEventListener('click', closeNavbar);
-	overlay.addEventListener('click', closeNavbar);
 	navLinks.forEach(function (navLink) {
 		navLink.addEventListener('click', clickNavLink);
 	});
 };
-initializeListeners();
+
+/**
+ * Builds the unordered list node that represents the navigation bar.
+ * @param items {array} a list of items that represent the structure that the navigation bar should have.
+ */
+var buildNavbarItemList = function (items) {
+	var listItems = [];
+
+	items.forEach(function (item) {
+
+		var isDropdown = item.items && item.items.length > 0;
+		var anchorOptions = {
+			url: item.url,
+			label: item.label,
+			classes: isDropdown ? ['dropdown-btn'] : null
+		};
+		var anchor = createAnchor(anchorOptions);
+
+		var listItemOptions = {
+			children: [anchor]
+		};
+
+		if (isDropdown) {
+			var secondaryUl = createNavListFromItems(item.items);
+			secondaryUl.classList.add('secondary');
+			listItemOptions.children.push(secondaryUl);
+		}
+
+		var listItem = createListItem(listItemOptions);
+		listItems.push(listItem);
+	});
+
+	var unorderedList = createUnorderedList({children: listItems});
+	return unorderedList;
+};
+
+/**
+ * Constructs the navbar based on the given json structure.
+ */
+var buildNavbar = function (json) {
+	var unorderedList = buildNavbarItemList(json.items);
+	unorderedList.classList.add('primary');
+
+	var nav = document.querySelector('#nav');
+	nav.appendChild(unorderedList);
+
+	addNavbarListeners();
+};
+
+/**
+ * Creates an ajax request for the nav json, parses it as a json object and calls the given callback with the json object.
+ */
+var getNavJSON = function (callback) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState === 4 && xhttp.status === 200) {
+			callback(JSON.parse(xhttp.responseText));
+		}
+	};
+	xhttp.open('GET', 'api/nav.json', true);
+	xhttp.send();
+};
+
+/**
+ * Starts the initialization of the navbar.
+ */
+var initializeNavbar = function () {
+	getNavJSON(buildNavbar);
+};
+
+/**
+ * Calls the given callback once the document has been fully loaded.
+ */
+var ready = function (callback) {
+	if (document.readyState !== 'loading'){
+		callback();
+	} else {
+		document.addEventListener('DOMContentLoaded', callback);
+	}
+};
+
+ready(initializeNavbar);

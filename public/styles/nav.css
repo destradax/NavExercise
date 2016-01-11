@@ -27,7 +27,7 @@ nav ul {
 	}
 
 	#nav-header {
-		float: left;
+		display: inline-block;
 	}
 
 	#logo {
@@ -40,6 +40,7 @@ nav ul {
 
 	ul.primary {
 		background-color: #ec008c;
+		display: inline-block;
 	}
 
 	ul.primary > li {
