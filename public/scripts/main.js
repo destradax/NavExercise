@@ -7,12 +7,121 @@ var primaryNavs = Array.prototype.slice.call(document.querySelectorAll('ul.prima
 var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav ul li a'));
 
 /**
+ * Creates and HTML node of the given tagName, with the given id and classes.
+ * @param options.tagName {string} The type of node that should be created.
+ * @param options.id {string} Optional. The id that should be assigned to the node.
+ * @param options.classes {array} Optional. A list of classes that should be assigned to the node.
+ * @param options.children {array} Optional. A list of nodes that should be appended to the node.
+ */
+var createNode = function (options) {
+	var node = document.createElement(options.tagName);
+	if (options.id) {
+		node.setAttribute('id', options.id);
+	}
+	if (options.classes) {
+		options.classes.forEach(function (className) {
+			node.classList.add(className);
+		});
+	}
+	if (options.children && options.children.length > 0) {
+		options.children.forEach(function (child) {
+			node.appendChild(child);
+		});
+	}
+	return node;
+};
+
+/**
+ * Creates an unordered list node with the given options, see createNode(options).
+ */
+var createUnorderedList = function (options) {
+	options.tagName = 'ul';
+	var ul = createNode(options);
+	return ul;
+};
+
+/**
+ * Creates a list item node with the given options, see createNode(options).
+ */
+var createListItem = function (options) {
+	options.tagName = 'li';
+	var li = createNode(options);
+	return li;
+};
+
+/**
+ * Creates an anchor node with the given url and text.
+ * @param options.url {string} the url to be set to the anchor href attribute.
+ * @param options.label {string} the text that will be appended to the anchor.
+ */
+var createAnchor = function (options) {
+	options.tagName = 'a';
+	var anchor = createNode(options);
+
+	anchor.setAttribute('href', options.url);
+	anchor.appendChild(document.createTextNode(options.label));
+	return anchor;
+};
+
+/**
+ * Creates an unordered list of items, each with a single anchor inside, based on the list of items passed.
+ * @param items {array} A list of items, each containing a url and a label.
+ */
+var createNavListFromItems = function (items) {
+	var listItems = [];
+
+	items.forEach(function (item) {
+		var anchor = createAnchor(item);
+		var listItem = createListItem({children: [anchor]});
+		listItems.push(listItem);
+	});
+
+	var ul = createUnorderedList({children: listItems});
+	return ul;
+};
+
+/**
+ * Builds the unordered list node that represents the navigation bar.
+ * @param items {array} a list of items that represent the structure that the navigation bar should have.
+ */
+var buildNavbarItemList = function (items) {
+	var listItems = [];
+
+	items.forEach(function (item) {
+
+		var isDropdown = item.items && item.items.length > 0;
+		var anchorOptions = {
+			url: item.url,
+			label: item.label,
+			classes: isDropdown ? ['dropdown-btn'] : null
+		};
+		var anchor = createAnchor(anchorOptions);
+
+		var listItemOptions = {
+			children: [anchor]
+		};
+
+		if (isDropdown) {
+			var secondaryUl = createNavListFromItems(item.items);
+			secondaryUl.classList.add('secondary');
+			listItemOptions.children.push(secondaryUl);
+		}
+
+		var listItem = createListItem(listItemOptions);
+		listItems.push(listItem);
+	});
+
+	var unorderedList = createUnorderedList({children: listItems});
+	return unorderedList;
+};
+
+/**
  * Constructs the navbar based on the given json structure.
  */
 var initializeNavbar = function (json) {
-	json.items.forEach(function (item) {
-		console.log(item.label + ': ' + item.url);
-	});
+	var unorderedList = buildNavbarItemList(json.items);
+
+	console.log(unorderedList);
 };
 
 /**
