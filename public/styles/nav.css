@@ -16,7 +16,7 @@ nav ul {
 	background-color: rgba(0, 0, 0, 0.5);
 	width: 100%;
 	height: 100%;
-	z-index: 100;
+	z-index: 9;
 }
 
 nav.active #overlay {
@@ -111,12 +111,11 @@ nav.active #overlay {
 
 	#nav-open {
 		display: inline;
-		left: -4px;
 	}
 
 	#nav-close {
 		display: none;
-		right: -4px;
+		right: 0px;
 	}
 
 	#logo {
@@ -136,12 +135,19 @@ nav.active #overlay {
 		display: none;
 	}
 
-	nav ul {
-		display: none;
+	nav.active ul {
+		display: block;
 	}
 
-	nav ul li {
+	nav ul {
+		display: none;
+		position: fixed;
+		height: 100%;
+		/*width: calc(100% - 72px);*/
+		top: 60px;
+		z-index: 10;
 		background-color: #fff;
+		overflow: auto;
 	}
 
 	nav ul li.logo {
@@ -154,6 +160,7 @@ nav.active #overlay {
 		color: #000;
 		font: 24px/48px HUGEAvantGardeBold;
 		padding-left: 24px;
+		padding-right: 150px;
 		width: 100%;
 	}
 
