@@ -27,7 +27,7 @@ nav ul {
 	}
 
 	#nav-header {
-		display: inline-block;
+		float: left;
 	}
 
 	#logo {
@@ -136,7 +136,7 @@ nav ul {
 
 	ul.primary {
 		display: none;
-		position: fixed;
+		position: absolute;
 		height: 100%;
 		top: 60px;
 		z-index: 10;
@@ -151,7 +151,6 @@ nav ul {
 		font: 24px/48px HUGEAvantGardeBold;
 		padding-left: 24px;
 		padding-right: 150px;
-		width: 100%;
 	}
 
 	ul.primary > li:hover > a {

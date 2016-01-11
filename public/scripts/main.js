@@ -172,7 +172,7 @@ var addNavbarListeners = function () {
 	var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav ul li a'));
 
 	navOpen.addEventListener('click', openNavbar);
-	navClose.addEventListener('click', closeNavbar);
+	navClose.addEventListener('click', resetNav);
 	navLinks.forEach(function (navLink) {
 		navLink.addEventListener('click', clickNavLink);
 	});
