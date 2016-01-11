@@ -7,6 +7,30 @@ var primaryNavs = Array.prototype.slice.call(document.querySelectorAll('ul.prima
 var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav ul li a'));
 
 /**
+ * Constructs the navbar based on the given json structure.
+ */
+var initializeNavbar = function (json) {
+	json.items.forEach(function (item) {
+		console.log(item.label + ': ' + item.url);
+	});
+};
+
+/**
+ * Creates an ajax request for the nav json, parses it as a json object and calls the given callback with the json object.
+ */
+var getNavJSON = function (callback) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState === 4 && xhttp.status === 200) {
+			callback(JSON.parse(xhttp.responseText));
+		}
+	};
+	xhttp.open('GET', 'api/nav.json', true);
+	xhttp.send();
+};
+getNavJSON(initializeNavbar);
+
+/**
  * Deactivates all the primary nav links.
  */
 var deactivatePrimaryNavs = function () {
