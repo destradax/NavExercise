@@ -1,6 +1,7 @@
 'use strict';
 var navOpen = document.querySelector('#nav-open');
 var navClose = document.querySelector('#nav-close');
+var overlay = document.querySelector('#overlay');
 
 /**
  * Opens the navigation bar.
@@ -13,6 +14,7 @@ var openNavbar = function () {
 		nav.className += 'active';
 	}
 };
+navOpen.addEventListener('click', openNavbar);
 
 /**
  * Closes the navigation bar.
@@ -23,7 +25,5 @@ var closeNavbar = function () {
 		nav.classList.remove('active');
 	}
 };
-
-navOpen.addEventListener('click', openNavbar);
-
 navClose.addEventListener('click', closeNavbar);
+overlay.addEventListener('click', closeNavbar);
